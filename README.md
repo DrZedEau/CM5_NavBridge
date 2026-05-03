@@ -9,7 +9,7 @@ This board is meant to be used with this project https://github.com/f-io/LIVI to
 For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?) to use the RPI as a standalone system for modern features (Music streaming, phone calls, navigation etc...).<br>
 
 <p align="center">
-  <img src="images/cm5_navbridge_pcb_3d.png" width="800">
+  <img src="images/PCB/cm5_navbridge_pcb_3d.png" width="800">
 </p>
 
 

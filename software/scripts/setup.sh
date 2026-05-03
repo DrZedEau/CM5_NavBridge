@@ -189,15 +189,12 @@ fi
 
 info "Download latest firmware"
 
-#####################
-### TODO
-git clone blabla to /tmp
-#####################
+wget -O /tmp/main.ino.hex https://raw.githubusercontent.com/DrZedEau/CM5_NavBridge/main/software/firmware/main/build/arduino.avr.micro/main.ino.hex
 
 info "Flashing Atmega32u4"
 
 dfu-programmer atmega32u4 erase
-dfu-programmer atmega32u4 flash /tmp
+dfu-programmer atmega32u4 flash /tmp/main.ino.hex
 dfu-programmer atmega32u4 reset
 
 section "SETUP COMPLETE"
