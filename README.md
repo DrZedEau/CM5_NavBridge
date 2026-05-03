@@ -15,17 +15,17 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 
 ## Features
 - Automotive grade buck converter (LMR14030-Q1) for a 5V and 3.5A output.
-- USB 2.0 for flashing the RPI. It can also be used as a regular USB port when system is up.
+- USB-C 2.0 for flashing the RPI shared with the USB Type A connector with an automatic selection. 
 - Video output from the DPI to a 24 bits video DAC (ADV7125)
 - Integrated audio chip PCM2912A (Stereo output and mono input)
 - Reads BMW IBUS with the integrated LIN transicver (ATA663254) connected to the MCU (ATmega32U4) for managing power for the RPI, keyboard simulation from OEM Headunit/Radio buttons and CDC emulation.
-- Mini PCIe port to add features (GPS or DAB+ boards)
-- No modifications required to the OEM system
+- Mini PCIe port to add features (GPS or DAB+ boards).
+- No modifications required to the OEM system.
   
 
 ## Repository contents
 - `hardware` Kicad project
-- `software` RPI scripts and MCU code
+- `software` RPI scripts and MCU code/firmware
 - `3D` STLs files for 3D printing
 
 
@@ -47,3 +47,6 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 - https://bmwteka.com/wds/en/e85/e82460cf
 - https://bmwteka.com/wds/en/e85/1b7f9876
 - https://forums.atariage.com/topic/260654-new-3do-rgb-mod-possibility/
+
+## Sponsor
+I was able to order a fully assembled PCB thanks to NextPCB sponsorship (https://www.nextpcb.com/)
