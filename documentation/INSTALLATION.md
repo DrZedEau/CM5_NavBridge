@@ -57,25 +57,25 @@ Pin assignments at plug connector Molex MicroFit 16 pins
 Get the cables, connectors and contacts
 
 <p align="center">
-  <img src="images/Installation/PXL_20260503_170337005.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_170337005.jpg" width="800">
 </p>
 
 
 Spend a lot of time stripping and crimping you cables
 
 <p align="center">
-  <img src="images/Installation/PXL_20260503_172125735.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_172125735.jpg" width="800">
 </p>
 
 <p align="center">
-  <img src="images/Installation/PXL_20260503_175904591.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_175904591.jpg" width="800">
 </p>
 
 
 Make it look nice
 
 <p align="center">
-  <img src="images/Installation/PXL_20260503_180248178.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_180248178.jpg" width="800">
 </p>
 
 
@@ -88,15 +88,15 @@ Requirements:
 - Two M3*16mm screws
 
 <p align="center">
-  <img src="images/Installation/PXL_20260427_115752760.jpg" width="800">
+  <img src="../images/Installation/PXL_20260427_115752760.jpg" width="800">
 </p>
 
 <p align="center">
-  <img src="images/Installation/PXL_20260427_115920373.jpg" width="800">
+  <img src="../images/Installation/PXL_20260427_115920373.jpg" width="800">
 </p>
 
 <p align="center">
-  <img src="images/Installation/PXL_20260427_115927307.MACRO_FOCUS.jpg" width="800">
+  <img src="../images/Installation/PXL_20260427_115927307.MACRO_FOCUS.jpg" width="800">
 </p>
 
 
@@ -108,20 +108,20 @@ Requirements:
 
 
 <p align="center">
-  <img src="images/Installation/PXL_20260430_212104020.jpg" width="800">
+  <img src="../images/Installation/PXL_20260430_212104020.jpg" width="800">
 </p>
 
 
 <p align="center">
-  <img src="images/Installation/PXL_20260503_180520800.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_180520800.jpg" width="800">
 </p>
 
 <p align="center">
-  <img src="images/Installation/PXL_20260503_180541386.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_180541386.jpg" width="800">
 </p>
 
 <p align="center">
-  <img src="images/Installation/PXL_20260503_180558319.MP.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_180558319.MP.jpg" width="800">
 </p>
 
 
@@ -133,37 +133,37 @@ Requirements:
 Remove the blue plug connector from the OEM Nav Module
 
 <p align="center">
-  <img src="images/Installation/PXL_20260503_180852178.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_180852178.jpg" width="800">
 </p>
 
 Plug your DIY connector into the Nav Module
 
 <p align="center">
-  <img src="images/Installation/PXL_20260503_181002076.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_181002076.jpg" width="800">
 </p>
 
 Plug the blue connector from the car into the NavBridge
 
 <p align="center">
-  <img src="images/Installation/PXL_20260503_181040436.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_181040436.jpg" width="800">
 </p>
 
 
 Find a cosy spot for the NavBridge
 
 <p align="center">
-  <img src="images/Installation/PXL_20260503_181050513.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_181050513.jpg" width="800">
 </p>
 
 
 With V0.2 no onbord sound car, so I'm using an external USB Audio output to the AUX of the car
 <p align="center">
-  <img src="images/Installation/PXL_20260503_181317444.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_181317444.jpg" width="800">
 </p>
 
 
 Enjoy your favourite PSP Games on the OEM Display
 <p align="center">
-  <img src="images/Installation/PXL_20260503_182221902.jpg" width="800">
+  <img src="../images/Installation/PXL_20260503_182221902.jpg" width="800">
 </p>
 

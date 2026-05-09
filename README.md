@@ -36,7 +36,7 @@ Coming with V0.3
 todo
 
 ## Install the CM5_NavBridge in your car
-[a relative link](documentation/INSTALLATION.md)
+[Installation](documentation/INSTALLATION.md)
 
 ## TODO
 - Finish PCB design V0.3
