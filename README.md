@@ -17,10 +17,13 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 - Automotive grade buck converter (LMR14030-Q1) for a 5V and 3.5A output.
 - USB-C 2.0 for flashing the RPI shared with the USB Type A connector with an automatic selection. 
 - Video output from the DPI to a 24 bits video DAC (ADV7125)
-- Integrated audio chip PCM2912A (Stereo output and mono input)
 - Reads BMW IBUS with the integrated LIN transicver (ATA663254) connected to the MCU (ATmega32U4) for managing power for the RPI, keyboard simulation from OEM Headunit/Radio buttons and CDC emulation.
-- Mini PCIe port to add features (GPS or DAB+ boards).
 - No modifications required to the OEM system.
+
+Coming with V0.3
+- Integrated audio chip PCM2912A (Stereo output and mono input)
+- Mini PCIe or M2 Slot to add features (GPS or DAB+ boards).
+
   
 
 ## Repository contents
@@ -29,6 +32,11 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 - `3D` STLs files for 3D printing
 
 
+## Flash the CM5_NavBridge
+todo
+
+## Install the CM5_NavBridge in your car
+[Installation](documentation/INSTALLATION.md)
 
 ## TODO
 - Finish PCB design V0.3

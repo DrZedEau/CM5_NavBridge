@@ -26,8 +26,8 @@ const uint8_t LIN_EN = 11;
 static unsigned long lastIbusActivityMs = 0;
 static bool slept = false;
 
-// Timeout set to 10 seconds of inactivity
-const unsigned long IBUS_INACTIVITY_TIMEOUT_MS = 10000;
+// Timeout set to 30 seconds of inactivity
+const unsigned long IBUS_INACTIVITY_TIMEOUT_MS = 30000;
 
 // SELECT button toggles between Arrow UP and Arrow DOWN
 static bool selectSendsUp = true;
@@ -49,7 +49,7 @@ static void rpiPwrButtonPress(unsigned long ms = 200) {
   digitalWrite(RPI_PWR_BUTTON, LOW);   // pull CM5 PWR_Button low
   delay(ms);
   pinMode(RPI_PWR_BUTTON, INPUT);      // release floating
-  delay(ms);
+  delay(500);
   digitalWrite(RPI_PWR_BUTTON, LOW); 
   delay(ms);
   pinMode(RPI_PWR_BUTTON, INPUT); 
