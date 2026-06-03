@@ -13,11 +13,13 @@ const uint8_t MCU_STAT_LED = 13;
 const uint8_t RPI_PWR_BUTTON = 7;
 
 // BUCK control
-const uint8_t BUCK_EN = 14;
+const uint8_t BUCK_EN = A3;
 
 // Analog RGB Switcher control
-const uint8_t SWITCHER_IN = 15;
-const uint8_t SWITCHER_EN = 16;
+const uint8_t SWITCHER_IN = A4;
+
+// Analog RGB Switcher control
+const uint8_t ADV_DAC_EN = A5;
 
 // LIN control
 const uint8_t LIN_EN = 11;
@@ -63,9 +65,12 @@ static void powerBuck(uint8_t pinState) {
 
 static void analogRgbInput(uint8_t pinState) {
   pinMode(SWITCHER_IN, OUTPUT);
-  pinMode(SWITCHER_EN, OUTPUT);
   digitalWrite(SWITCHER_IN, pinState);
-  digitalWrite(SWITCHER_EN, LOW);
+}
+
+static void advDacControl(uint8_t pinState) {
+  pinMode(ADV_DAC_EN, OUTPUT);
+  digitalWrite(ADV_DAC_EN, pinState);
 }
 
 static void controlLin(uint8_t pinState) {
@@ -108,6 +113,8 @@ void setup() {
   // Make sure LIN transceiver is in normal mode
   controlLin(HIGH);
 
+  advDacControl(LOW);
+
   // IBUS is 9600 8E1 on BMW
   Serial1.begin(9600, SERIAL_8E1);
   ibusTrx.begin(Serial1);
@@ -130,11 +137,13 @@ void loop() {
     // // IGN handling
     if (ibusIsIgnPos2(msg)) {
       powerBuck(HIGH);  // Enable the BUCK to power the RPI when IGN POS2 is detected on IBUS
+      advDacControl(HIGH); // Enable Video DAC when RPI boots
     }
     if (ibusIsIgnOff(msg)) {
+      advDacControl(LOW); // Disable Video DAC when RPI is about to shutdown
       rpiPwrButtonPress(); // Send graceful power off to the RPI when IGN OFF is detected on IBUS
-      delay(3000);
-      powerBuck(LOW);
+      delay(3000); // Wait for RPI to completely shut down
+      powerBuck(LOW); 
     }
 
     if (ibusIsTelephonePressed(msg)) {
