@@ -97,6 +97,11 @@ static void SleepMode() {
 void setup() {
   clock_prescale_set(clock_div_1);
 
+  // Disable JTAG on PF4-PF7.
+  // Must write JTD twice within 4 cycles.
+  MCUCR |= (1 << JTD);
+  MCUCR |= (1 << JTD);
+
   // Make sure the PWR Button pin is input (LOW will prevent the RPI form booting)
   pinMode(RPI_PWR_BUTTON, INPUT);
 
