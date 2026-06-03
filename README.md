@@ -1,4 +1,4 @@
-# CM5 NavBridge 0.3
+# CM5 NavBridge
 
 A Raspberry Pi Compute Module 5 Carrier board for E-Series BMW (E46, E39, E85 etc...) with Nav module and CID or BMBT (Headunit/Radio with 6.5 inches OEM display).<br>
 
@@ -19,10 +19,8 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 - Video output from the DPI to a 24 bits video DAC (ADV7125)
 - Reads BMW IBUS with the integrated LIN transicver (ATA663254) connected to the MCU (ATmega32U4) for managing power for the RPI, keyboard simulation from OEM Headunit/Radio buttons and CDC emulation.
 - No modifications required to the OEM system.
-
-Coming with V0.3
-- Integrated audio chip PCM2912A (Stereo output and mono input)
-- Mini PCIe or M2 Slot to add features (GPS or DAB+ boards).
+- Integrated audio chip PCM2912A (Stereo output and mono input).
+- M.2 PCIe M Key Slot to add features (Custom GPS or DAB+ 2230 boards ).
 
   
 
@@ -39,9 +37,8 @@ todo
 [Installation](documentation/INSTALLATION.md)
 
 ## TODO
-- Finish PCB design V0.3
-- Order board
-- Test the board on various E-Series BMWs
+- Test the board on various E-Series BMWs and Nav modules (Has only been tested on a BMW Z4 E86 with MK4 Nav Module)
+- Improve the PCB design with available ICs (v0.4)
 
 
 
@@ -56,5 +53,3 @@ todo
 - https://bmwteka.com/wds/en/e85/1b7f9876
 - https://forums.atariage.com/topic/260654-new-3do-rgb-mod-possibility/
 
-## Sponsor
-I was able to order a fully assembled PCB thanks to NextPCB sponsorship (https://www.nextpcb.com/)
