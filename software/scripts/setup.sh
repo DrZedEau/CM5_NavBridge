@@ -189,7 +189,7 @@ fi
 
 info "Download latest firmware"
 
-wget -O /tmp/main.ino.hex https://raw.githubusercontent.com/DrZedEau/CM5_NavBridge/main/software/firmware/main/build/arduino.avr.micro/main.ino.hex
+wget -O /tmp/main.ino.hex https://raw.githubusercontent.com/DrZedEau/CM5_NavBridge/dev/software/firmware/main/build/arduino.avr.micro/main.ino.hex
 
 info "Flashing Atmega32u4"
 
