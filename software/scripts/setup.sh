@@ -124,8 +124,8 @@ dtoverlay=vc4-kms-dpi-generic
 # Pixel Clock
 dtparam=clock-frequency=7985760
 
-# Horizontal: 400 active, 12 fp, 40 sync, 56 bp = 508 => pixel_clock/508 => 15.72 kHz
-dtparam=hactive=400,hfp=12,hsync=40,hbp=56
+# Horizontal: 400 active, 8 fp, 40 sync, 60 bp = 508 => pixel_clock/508 => 15.72 kHz
+dtparam=hactive=400,hfp=8,hsync=40,hbp=60
 
 # Vertical: 240 active, 1 fp, 3 sync, 18 bp = 262 => 15.72/262 => 60.0 Hz
 dtparam=vactive=240,vfp=1,vsync=3,vbp=18
