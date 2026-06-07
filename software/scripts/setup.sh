@@ -38,7 +38,7 @@ info "Updating system and package installation"
 
 apt -y update
 apt -y upgrade
-apt -y install raspi-utils libpio-dev git build-essential dfu-programmer
+apt -y install raspi-utils libpio-dev git build-essential dfu-programmer fbi
 
 ok "Done."
 
@@ -148,11 +148,6 @@ fi
 
 section "IMPROVE BOOT TIME AND PERFORMANCES"
 
-# Before
-# Startup finished in 1.704s (kernel) + 11.887s (userspace) = 13.591s
-
-# After
-# Startup finished in 1.672s (kernel) + 4.433s (userspace) = 6.105s
 
 info "Disable unused services"
 
@@ -162,15 +157,71 @@ systemctl disable --now cloud-init-local.service
 systemctl disable --now cloud-init-main.service
 systemctl disable --now cloud-init-network.service
 systemctl disable --now avahi-daemon.socket
-systemctl disable --now cups.socket
 systemctl disable --now NetworkManager-wait-online.service
-systemctl disable --now nfs-blkmap.service
-systemctl disable --now rpcbind.socket
+
 
 info "Remove unused packages"
 
 apt purge cloud-init -y
 apt autoremove --purge -y
+
+
+section "SLPASH SCREEN"
+
+SPLASH_PATH="/usr/local/share/splash"
+SPLASH_FILE="$SPLASH_PATH/splash.png"
+
+info "Download the default splash screen"
+
+mkdir $SPLASH_PATH
+chmod 775 $SPLASH_PATH
+
+wget -O $SPLASH_FILE https://github.com/DrZedEau/CM5_NavBridge/blob/dev/images/splash/splash.png?raw=true
+chmod 664 $SPLASH_FILE
+
+
+
+info "Create systemd service: splash_custom.service"
+
+cat <<'EOF' >/etc/systemd/system/splash_custom.service
+[Unit]
+Description=Custom splash screen
+DefaultDependencies=no
+After=local-fs.target systemd-vconsole-setup.service
+Before=getty@tty1.service multi-user.target livi-kiosk.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/fbi -T 1 -d /dev/fb0 --noverbose -a /usr/local/share/splash/splash.png
+StandardInput=tty
+StandardOutput=tty
+TTYPath=/dev/tty1
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+info "Enable splash_custom.service"
+
+systemctl daemon-reload
+systemctl enable splash_custom.service
+
+
+info "Enable splash screen in /boot/firmware/cmdline.txt"
+
+CMDLINE_FILE="/boot/firmware/cmdline.txt"
+OPTS="quiet loglevel=3 logo.nologo vt.global_cursor_default=0 splash"
+
+sudo cp "$CMDLINE_FILE" "$CMDLINE_FILE.bak"
+
+for opt in $OPTS; do
+  if ! grep -qw "$opt" "$CMDLINE_FILE"; then
+    sudo sed -i "s/$/ $opt/" "$CMDLINE_FILE"
+  fi
+done
+
+ok "Done."
 
 
 
