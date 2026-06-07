@@ -176,7 +176,7 @@ info "Download the default splash screen"
 mkdir $SPLASH_PATH
 chmod 775 $SPLASH_PATH
 
-wget -O $SPLASH_FILE https://github.com/DrZedEau/CM5_NavBridge/blob/dev/images/splash/splash.png?raw=true
+wget -O $SPLASH_FILE https://raw.githubusercontent.com/DrZedEau/CM5_NavBridge/refs/heads/dev/images/splash/splash.png
 chmod 664 $SPLASH_FILE
 
 
