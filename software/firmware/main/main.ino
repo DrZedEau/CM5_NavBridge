@@ -50,12 +50,7 @@ static void rpiPwrButtonPress(unsigned long ms = 200) {
   pinMode(RPI_PWR_BUTTON, OUTPUT);
   digitalWrite(RPI_PWR_BUTTON, LOW);   // pull CM5 PWR_Button low
   delay(ms);
-  pinMode(RPI_PWR_BUTTON, INPUT);      // release floating
-  delay(500);
-  digitalWrite(RPI_PWR_BUTTON, LOW); 
-  delay(ms);
-  pinMode(RPI_PWR_BUTTON, INPUT); 
-// Simulate two PWR_button presses to initiate RPI shutdown
+  pinMode(RPI_PWR_BUTTON, INPUT);      // release button press
 }
 
 static void powerBuck(uint8_t pinState) {
