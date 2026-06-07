@@ -33,6 +33,9 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 ## Flash the CM5_NavBridge
 todo
 
+## Setup the RPI
+`curl -fsSL https://raw.githubusercontent.com/DrZedEau/CM5_NavBridge/dev/software/scripts/setup.sh | sudo bash`
+
 ## Install the CM5_NavBridge in your car
 [Installation](documentation/INSTALLATION.md)
 
