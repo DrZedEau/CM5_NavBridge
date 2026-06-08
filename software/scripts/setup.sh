@@ -116,10 +116,7 @@ Before=sysinit.target
 
 [Service]
 Type=simple
-ExecStartPre=/bin/sh -c 'echo 1 > /sys/class/graphics/fbcon/cursor_blink 2>/dev/null || true'
 ExecStart=/usr/local/sbin/dpi_csync-start
-ExecStartPost=/bin/sleep 0.2
-ExecStartPost=/bin/sh -c 'echo 0 > /sys/class/graphics/fb0/blank 2>/dev/null || true'
 Restart=on-failure
 RestartSec=2
 
