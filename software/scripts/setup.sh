@@ -32,7 +32,25 @@ if [[ "$EUID" -ne 0 ]]; then
     exit 1
 fi
 
-section "SYSTEM UPDATE AND PACKAGE INSTALLATION"
+##########################################################################
+section "IMPROVE BOOT TIME AND REMOVE UNUSED PACKAGES"
+
+info "Disable unused services"
+
+systemctl disable --now NetworkManager-wait-online.service
+
+info "Remove unused packages"
+
+apt purge cloud-init -y
+apt autoremove --purge -y
+
+ok "Done."
+##########################################################################
+
+
+
+##########################################################################
+section "SYSTEM UPDATE AND PACKAGES INSTALLATION"
 
 info "Updating system and package installation"
 
@@ -41,8 +59,11 @@ apt -y upgrade
 apt -y install raspi-utils libpio-dev git build-essential dfu-programmer fbi
 
 ok "Done."
+##########################################################################
 
 
+
+##########################################################################
 WORKDIR=/opt/raspi-utils
 REPO_URL="https://github.com/raspberrypi/utils.git"
 
@@ -62,8 +83,10 @@ info "Install dpi_csync to /usr/local/bin"
 install -m 755 ./dpi_csync /usr/local/bin/dpi_csync
 
 ok "Done."
+##########################################################################
 
 
+##########################################################################
 section "ADD dpi_csync SCRIPT TO SYSTEMD"
 
 info "Create Wrapper script"
@@ -84,15 +107,19 @@ chmod 755 /usr/local/sbin/dpi_csync-start
 info "Create systemd service: dpi_csync.service"
 
 cat <<'EOF' >/etc/systemd/system/dpi_csync.service
+
 [Unit]
-Description=Generate DPI csync using PIO
-After=sysinit.target
+Description=Start DPI csync before display use
+DefaultDependencies=no
+After=local-fs.target
+Before=sysinit.target
 
 [Service]
 Type=simple
+ExecStartPre=/bin/sh -c 'echo 1 > /sys/class/graphics/fbcon/cursor_blink 2>/dev/null || true'
 ExecStart=/usr/local/sbin/dpi_csync-start
-User=root
-Group=root
+ExecStartPost=/bin/sleep 0.2
+ExecStartPost=/bin/sh -c 'echo 0 > /sys/class/graphics/fb0/blank 2>/dev/null || true'
 Restart=on-failure
 RestartSec=2
 
@@ -107,8 +134,11 @@ systemctl enable dpi_csync.service
 systemctl start dpi_csync.service
 
 ok "Done."
+##########################################################################
 
 
+
+##########################################################################
 CONFIG_FILE="/boot/firmware/config.txt"
 
 section "CREATE DPI CONFIG"
@@ -145,31 +175,17 @@ else
     info "DPI Config already present in $CONFIG_FILE"
     info "Skipping"
 fi
-
-section "IMPROVE BOOT TIME AND PERFORMANCES"
-
-
-info "Disable unused services"
-
-systemctl disable --now cloud-config.service
-systemctl disable --now cloud-final.service
-systemctl disable --now cloud-init-local.service
-systemctl disable --now cloud-init-main.service
-systemctl disable --now cloud-init-network.service
-systemctl disable --now avahi-daemon.socket
-systemctl disable --now NetworkManager-wait-online.service
+##########################################################################
 
 
-info "Remove unused packages"
 
-apt purge cloud-init -y
-apt autoremove --purge -y
-
-
-section "SLPASH SCREEN"
-
+##########################################################################
 SPLASH_PATH="/usr/local/share/splash"
 SPLASH_FILE="$SPLASH_PATH/splash.png"
+CMDLINE_FILE="/boot/firmware/cmdline.txt"
+OPTS="quiet loglevel=3 logo.nologo vt.global_cursor_default=0 splash consoleblank=0"
+
+section "SLPASH SCREEN"
 
 info "Download the default splash screen"
 
@@ -188,7 +204,7 @@ cat <<'EOF' >/etc/systemd/system/splash_custom.service
 Description=Custom splash screen
 DefaultDependencies=no
 After=local-fs.target systemd-vconsole-setup.service
-Before=getty@tty1.service multi-user.target livi-kiosk.service
+Before=getty@tty1.service multi-user.target
 
 [Service]
 Type=simple
@@ -210,10 +226,12 @@ systemctl enable splash_custom.service
 
 info "Enable splash screen in /boot/firmware/cmdline.txt"
 
-CMDLINE_FILE="/boot/firmware/cmdline.txt"
-OPTS="quiet loglevel=3 logo.nologo vt.global_cursor_default=0 splash"
 
 sudo cp "$CMDLINE_FILE" "$CMDLINE_FILE.bak"
+
+sudo sed -i -E \
+  's/(^|[[:space:]])console=tty1([[:space:]]|$)/ /g; s/[[:space:]]+/ /g; s/^ //; s/ $//' \
+  "$CMDLINE_FILE"
 
 for opt in $OPTS; do
   if ! grep -qw "$opt" "$CMDLINE_FILE"; then
@@ -222,9 +240,10 @@ for opt in $OPTS; do
 done
 
 ok "Done."
+##########################################################################
 
 
-
+##########################################################################
 section "FLASH MCU FIRMWARE"
 
 info "Ensure MCU is in DFU mode"
@@ -247,6 +266,10 @@ info "Flashing Atmega32u4"
 dfu-programmer atmega32u4 erase
 dfu-programmer atmega32u4 flash /tmp/main.ino.hex
 dfu-programmer atmega32u4 reset
+
+ok "Done."
+##########################################################################
+
 
 section "SETUP COMPLETE"
 warn "Reboot system to apply changes"
