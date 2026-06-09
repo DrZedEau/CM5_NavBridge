@@ -154,8 +154,8 @@ dtparam=clock-frequency=7985760
 # Horizontal: 400 active, 8 fp, 40 sync, 60 bp = 508 => pixel_clock/508 => 15.72 kHz
 dtparam=hactive=400,hfp=8,hsync=40,hbp=60
 
-# Vertical: 240 active, 1 fp, 3 sync, 18 bp = 262 => 15.72/262 => 60.0 Hz
-dtparam=vactive=240,vfp=1,vsync=3,vbp=18
+# Vertical: 240 active, 3 fp, 3 sync, 16 bp = 262 => 15.72/262 => 60.0 Hz
+dtparam=vactive=240,vfp=3,vsync=3,vbp=16
 
 # 24 bits RGB signal
 dtparam=rgb888
