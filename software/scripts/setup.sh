@@ -179,17 +179,29 @@ Wants=sound.target
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/set-usb-codec-volume.sh
-RemainAfterExit=no
-
-[Install]
-WantedBy=multi-user.target
 EOF
 
-info "Enable and start codec_volume.service"
+info "Create systemd timer: codec_volume.timer"
 
-systemctl daemon-reload
-systemctl enable codec_volume.service
-systemctl start codec_volume.service
+cat <<'EOF' >/etc/systemd/system/codec_volume.timer
+
+[Unit]
+Description=Run USB audio CODEC volume setter after boot
+
+[Timer]
+OnStartupSec=5s
+Unit=codec_volume.service
+
+[Install]
+WantedBy=timers.target
+EOF
+
+
+info "Enable and start codec_volume.timer"
+
+sudo systemctl daemon-reload
+sudo systemctl enable codec_volume.timer
+sudo systemctl start codec_volume.timer
 
 ok "Done."
 ##########################################################################
