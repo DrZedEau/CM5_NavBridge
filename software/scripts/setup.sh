@@ -134,6 +134,66 @@ ok "Done."
 ##########################################################################
 
 
+##########################################################################
+section "ENSURE VOLUME IS SET AT BOOT"
+
+info "Create script"
+
+cat <<'EOF' >/usr/local/bin/set-usb-codec-volume.sh
+#!/bin/bash
+set -euo pipefail
+
+VOLUME="100%"
+MATCH="CODEC"
+
+CARD_ID="$(aplay -l | awk -v needle="$MATCH" '
+  $1 == "card" && index($0, needle) {
+    gsub(":", "", $2)
+    print $2
+    exit
+  }
+')"
+
+if [ -z "$CARD_ID" ]; then
+  echo "USB audio CODEC card not found"
+  exit 1
+fi
+
+echo "Found USB audio CODEC on ALSA card $CARD_ID"
+
+amixer -c "$CARD_ID" sset "Speaker" "$VOLUME" unmute
+exit 0
+EOF
+
+chmod 755 /usr/local/bin/set-usb-codec-volume.sh
+
+info "Create systemd service: codec_volume.service"
+
+cat <<'EOF' >/etc/systemd/system/codec_volume.service
+
+[Unit]
+Description=Set USB audio CODEC volume
+After=sound.target
+Wants=sound.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/set-usb-codec-volume.sh
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+info "Enable and start codec_volume.service"
+
+systemctl daemon-reload
+systemctl enable codec_volume.service
+systemctl start codec_volume.service
+
+ok "Done."
+##########################################################################
+
 
 ##########################################################################
 CONFIG_FILE="/boot/firmware/config.txt"
