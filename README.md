@@ -42,17 +42,16 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 | CM5 Heatsink                      | Hightly recommended as the CM5 might throttle without heat dissipation   |
 | A USB dongle for AA/Carplay       | Either a Carlinkit CPC200-CCPA or CPC200-CCPW (Newer version of LIVI do not require a dongle for Android phones) | 
 
+<br>
 
-
-## Flash the CM5 and install the requirements
-[Prepare the board](documentation/PREPARATION.md)
-
-## Install the CM5_NavBridge in your car
-[Installation](documentation/INSTALLATION.md)
+## Documentation
+[Prepare the NavBridge board](documentation/PREPARATION.md)
+[Install the Navbridge in your car](documentation/INSTALLATION.md)
 
 ## TODO
 - Test the board on various E-Series BMWs and Nav modules (Has only been tested on a BMW Z4 E86 with MK4 Nav Module)
 - Improve the PCB design with available ICs (v0.4)
+- CDC Emulation
 
 
 
