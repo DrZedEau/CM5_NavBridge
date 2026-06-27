@@ -66,7 +66,9 @@ Once the flash has completed, unplug the board and connect it to a USB-C charger
 
 The RPI CM5 should boot (first boot takes some time) and be accessible via SSH. Once connected, run the following command to configure the OS:
 
-```curl -fsSL https://raw.githubusercontent.com/DrZedEau/CM5_NavBridge/dev/software/scripts/setup.sh | sudo bash```
+```bash
+curl -fsSL https://raw.githubusercontent.com/DrZedEau/CM5_NavBridge/dev/software/scripts/setup.sh | sudo bash
+```
 
 This script:
 - removes packages and unused services to improve the boot time
@@ -79,7 +81,9 @@ This script:
 
 Reboot the RPI with the following command:
 
-```sudo reboot```
+```bash
+sudo reboot
+```
 
 
 ## Install LIVI 
@@ -88,7 +92,9 @@ To get Android Auto and Carplay on the RPI, I'm using this project https://githu
 
 Install the RPI-Lite OS version:
 
-```curl -fL -o install.sh https://raw.githubusercontent.com/f-io/LIVI/main/scripts/install/pi-lite/install.sh
+```bash
+curl -fL -o install.sh https://raw.githubusercontent.com/f-io/LIVI/main/scripts/install/pi-lite/install.sh
 chmod +x install.sh
-./install.sh```
+./install.sh
+```
 
