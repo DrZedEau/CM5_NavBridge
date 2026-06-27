@@ -2,7 +2,7 @@
 
 A Raspberry Pi Compute Module 5 Carrier board for E-Series BMW (E46, E39, E85 etc...) with Nav module and CID or BMBT (Headunit/Radio with 6.5 inches OEM display).<br>
 
-This board is installed between the car harness and the Nav module (Mk3 or Mk4). It keeps the OEM Headunit/Radio system while adding video from the RPI to the OEM display. An audio (Stereo) output is present that can be connected to the AUX input of the OEM Headunit/Radio or to the CDC harness (The MCU would simulate the CDC module).<br>
+This board is installed between the car harness and the Nav module (Mk3 or Mk4). It keeps the OEM Headunit/Radio system while adding video from the RPI to the OEM display. An audio (Stereo) output is present that can be connected to the AUX input of the OEM Headunit/Radio or to the CDC harness (CDC Emulation not working at the moment).<br>
 It also provides a microphone input, either from the OEM or aftermarket microphone.
 
 This board is meant to be used with this project https://github.com/f-io/LIVI to add Carplay and Android Auto capabilities to the RPI.<br>
@@ -20,9 +20,8 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 - Reads BMW IBUS with the integrated LIN transicver (ATA663254) connected to the MCU (ATmega32U4) for managing power for the RPI, keyboard simulation from OEM Headunit/Radio buttons and CDC emulation.
 - No modifications required to the OEM system.
 - Integrated audio chip PCM2912A (Stereo output and mono input).
-- M.2 PCIe M Key Slot to add features (Custom GPS or DAB+ 2230 boards ).
+- M.2 PCIe M Key Slot to add features (Custom GPS or DAB+ 2230 boards).
 
-  
 
 ## Repository contents
 - `hardware` Kicad project
@@ -30,11 +29,19 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 - `3D` STLs files for 3D printing
 
 
-## Flash the CM5_NavBridge
-todo
+## BOM
+- The assembled PCB
+- 3D printed connector
+- 3D printed case
+- DIY Cable from the NavBridge to the Nav Module
+- DIY Cables for audio output and input
+- A Raspberry Pi Compute Module 5 (lite version not compatible with the PCB, a CM5 with eMMC is mandatory and preferably with at least 4GB of RAM)
+- CM5 Heatsink (hightly recommended as the CM5 might throttle without heat dissipation)
+- A USB dongle for AA/Carplay either a Carlinkit CPC200-CCPA (wireless/wired) or a CPC200-CCPW (wired)
 
-## Setup the RPI
-`curl -fsSL https://raw.githubusercontent.com/DrZedEau/CM5_NavBridge/dev/software/scripts/setup.sh | sudo bash`
+
+## Flash the CM5 and install the requirements
+[Prepare the board](documentation/PREPARATION.md)
 
 ## Install the CM5_NavBridge in your car
 [Installation](documentation/INSTALLATION.md)
