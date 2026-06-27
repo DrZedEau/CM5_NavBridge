@@ -11,7 +11,7 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 <p align="center">
   <img src="images/PCB/cm5_navbridge_pcb_3d.png" width="800">
 </p>
-<br>
+
 
 ## Features
 - Automotive grade buck converter (LMR14030-Q1) for a 5V and 3.5A output.
@@ -21,13 +21,13 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 - No modifications required to the OEM system.
 - Integrated audio chip PCM2912A (Stereo output and mono input).
 - M.2 PCIe M Key Slot to add features (Custom GPS or DAB+ 2230 boards).
-<br>
+
 
 ## Repository contents
 - `hardware` Kicad project
 - `software` RPI scripts and MCU code/firmware
 - `3D` STLs files for 3D printing
-<br>
+
 
 
 ## BOM
@@ -43,22 +43,22 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 | CM5 Heatsink                      | Hightly recommended as the CM5 might throttle without heat dissipation   |
 | A USB dongle for AA/Carplay       | Either a Carlinkit CPC200-CCPA or CPC200-CCPW (Newer version of LIVI do not require a dongle for Android phones) | 
 
-<br>
 
 ## Documentation
 [Prepare the NavBridge board](documentation/PREPARATION.md)<br>
 [Install the Navbridge in your car](documentation/INSTALLATION.md)<br>
 
+
 ## TODO
 - Test the board on various E-Series BMWs and Nav modules (Has only been tested on a BMW Z4 E86 with MK4 Nav Module)
 - Improve the PCB design with available ICs (v0.4)
 - CDC Emulation
-<br>
+
 
 
 ## Contributing
 - Any improvements on the design are welcome.
-<br>
+
 
 ## References
 - https://www.e46fanatics.com/threads/bmw-on-board-monitor-without-navigation-unit.1303552
