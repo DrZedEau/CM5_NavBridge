@@ -98,14 +98,16 @@ chmod +x install.sh
 ./install.sh
 ```
 
-Then reboot and reconnect to change the resolution for AA and Carplay
+Then reboot 
 
 ```bash
 sudo reboot
 ```
 
+And reconnect to change the resolution for AA and Carplay (This resolution is twice what the OEM display is capable of but renders fine)
+
 ```bash
-sed -i -E 's/"projectionWidth": *[0-9]+/"projectionWidth": 800/; s/"projectionHeight": *[0-9]+/"projectionHeight": 400/' ~/.config/LIVI/config.json
+sed -i -E 's/"projectionWidth": *[0-9]+/"projectionWidth": 800/; s/"projectionHeight": *[0-9]+/"projectionHeight": 480/' ~/.config/LIVI/config.json
 ```
 
 Finally you can shutdown the RPI:
