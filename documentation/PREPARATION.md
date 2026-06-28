@@ -98,3 +98,20 @@ chmod +x install.sh
 ./install.sh
 ```
 
+Then reboot and reconnect to change the resolution for AA and Carplay
+
+```bash
+sudo reboot
+```
+
+```bash
+sed -i -E 's/"projectionWidth": *[0-9]+/"projectionWidth": 800/; s/"projectionHeight": *[0-9]+/"projectionHeight": 400/' ~/.config/LIVI/config.json
+```
+
+Finally you can shutdown the RPI:
+
+```bash
+sudo shutdown -h now
+```
+
+The board is now ready and can be installed inside the car
