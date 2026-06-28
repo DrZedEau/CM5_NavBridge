@@ -45,8 +45,8 @@ For futur releases, I'm planning on providing a dedicted OS (based on AGL maybe?
 
 
 ## Documentation
-[Prepare the NavBridge board](documentation/PREPARATION.md)<br>
-[Install the Navbridge in your car](documentation/INSTALLATION.md)<br>
+[PREPARE AND FLASH THE NAVBRIDGE](documentation/PREPARATION.md)<br>
+[INSTALL THE NAVBRIDGE IN CAR](documentation/INSTALLATION.md)<br>
 
 
 ## TODO

@@ -1,4 +1,4 @@
-# How to install the NavBridge ?
+# INSTALL THE NAVBRIDGE IN CAR
 
 Below is the procedure to install the CM5 NavBridge on a E-Series BMW with Mk3 or Mk4 Nav module.<br>
 
