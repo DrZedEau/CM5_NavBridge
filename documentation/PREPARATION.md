@@ -1,4 +1,4 @@
-# Prepare and flash the NavBrdige
+# Prepare and flash the NavBridge
 
 ## Assemble the board with the RPI CM5
 
