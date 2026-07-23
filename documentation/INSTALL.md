@@ -79,51 +79,6 @@ Make it look nice
 </p>
 
 
-## Prepare the PCB
-
-
-### 3D print the blue connector and install it
-
-Requirements: 
-- Two M3*16mm screws
-
-<p align="center">
-  <img src="../images/Installation/PXL_20260427_115752760.jpg" width="800">
-</p>
-
-<p align="center">
-  <img src="../images/Installation/PXL_20260427_115920373.jpg" width="800">
-</p>
-
-<p align="center">
-  <img src="../images/Installation/PXL_20260427_115927307.MACRO_FOCUS.jpg" width="800">
-</p>
-
-
-### 3D print the case and install the PCB
-
-Requirements: 
-- Four M2.5*8mm to secure the PCB to the case
-- Four M2.5*8mm to install the CM5 heatsink 
-
-
-<p align="center">
-  <img src="../images/Installation/PXL_20260430_212104020.jpg" width="800">
-</p>
-
-
-<p align="center">
-  <img src="../images/Installation/PXL_20260503_180520800.jpg" width="800">
-</p>
-
-<p align="center">
-  <img src="../images/Installation/PXL_20260503_180541386.jpg" width="800">
-</p>
-
-<p align="center">
-  <img src="../images/Installation/PXL_20260503_180558319.MP.jpg" width="800">
-</p>
-
 
 ## Install inside the car
 
